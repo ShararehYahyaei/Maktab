@@ -237,7 +237,7 @@ public class Main {
                     }
                     break;
                 case "8":
-////////////////////////
+
                     Article[] articlesPublished = articleService.showArticleBasedOnPublishedDate();
                     for (Article article : articlesPublished) {
                         if (article != null) {
@@ -245,6 +245,7 @@ public class Main {
                         }
 
                     }
+
                     break;
                 case "10":
                     return;

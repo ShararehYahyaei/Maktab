@@ -63,16 +63,16 @@ public class ArticleService {
         LocalDateTime oneYear = now.minusYears(1);
         for (Article article : articles) {
 
-           if(article!=null){
-               if (article.getCreateDate().isAfter(oneYear)) {
-                   for (int i = 0; i < newArticleForOneYear.length; i++) {
-                       if (newArticleForOneYear[i] == null) {
-                           newArticleForOneYear[i] = article;
-                           break;
-                       }
-                   }
-               }
-           }
+            if (article != null) {
+                if (article.getCreateDate().isAfter(oneYear)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         return newArticleForOneYear;
@@ -85,7 +85,7 @@ public class ArticleService {
         LocalDateTime sixMonthsAgo = now.minusMonths(6);
         for (Article article : articles) {
 
-            if(article!=null){
+            if (article != null) {
                 if (article.getCreateDate().isAfter(sixMonthsAgo)) {
                     for (int i = 0; i < newArticleForOneYear.length; i++) {
                         if (newArticleForOneYear[i] == null) {
@@ -107,7 +107,7 @@ public class ArticleService {
         LocalDateTime oneWeekAgo = now.minusWeeks(1);
         for (Article article : articles) {
 
-            if(article!=null){
+            if (article != null) {
                 if (article.getCreateDate().isAfter(oneWeekAgo)) {
                     for (int i = 0; i < newArticleForOneYear.length; i++) {
                         if (newArticleForOneYear[i] == null) {
@@ -121,14 +121,15 @@ public class ArticleService {
 
         return newArticleForOneYear;
     }
+
     public Article[] showArticlesBasedOnOneHourAgo() {
         Article[] articles = database.getArticleInit();
         Article[] newArticleForOneYear = new Article[articles.length + 5];
 
-        LocalDateTime oneHourAgo =  LocalDateTime.now().minusHours(1);
+        LocalDateTime oneHourAgo = LocalDateTime.now().minusHours(1);
         for (Article article : articles) {
 
-            if(article!=null){
+            if (article != null) {
 
                 if (article.getCreateDate().isAfter(oneHourAgo)) {
                     for (int i = 0; i < newArticleForOneYear.length; i++) {
@@ -155,16 +156,16 @@ public class ArticleService {
 
         switch (res) {
             case "1":
-                articledPublishForOneYearAgo();
+                newArticleFilter = showPublishedArticlesBasedOnOneHourAgo();
                 break;
             case "2":
-                newArticleFilter = showArticlesBasedOnaWeekAgo();
+                newArticleFilter =   showPublishedArticleBasedOnAWeekAgo();
                 break;
             case "3":
-                newArticleFilter =  showPublishedArticlesForSixMonthAgo();
+                newArticleFilter = showPublishedArticlesForSixMonthAgo();
                 break;
             case "4":
-                newArticleFilter = showArticleBasedOnOneYear();
+                newArticleFilter = articledPublishForOneYearAgo();
                 break;
             default:
                 System.out.println("گزینه نامناسب");
@@ -181,7 +182,7 @@ public class ArticleService {
         LocalDateTime oneYear = now.minusYears(1);
         for (Article article : articles) {
 
-            if(article!=null){
+            if (article != null) {
                 if (article.getPublishedDate().isAfter(oneYear)) {
                     for (int i = 0; i < newArticleForOneYear.length; i++) {
                         if (newArticleForOneYear[i] == null) {
@@ -195,6 +196,7 @@ public class ArticleService {
 
         return newArticleForOneYear;
     }
+
     public Article[] showPublishedArticlesForSixMonthAgo() {
         Article[] articles = database.getArticleInit();
         Article[] newArticleForOneYear = new Article[articles.length + 5];
@@ -202,8 +204,8 @@ public class ArticleService {
         LocalDateTime sixMonthsAgo = now.minusMonths(6);
         for (Article article : articles) {
 
-            if(article!=null){
-                if (article.getCreateDate().isAfter(sixMonthsAgo)) {
+            if (article != null) {
+                if (article.getPublishedDate().isAfter(sixMonthsAgo)) {
                     for (int i = 0; i < newArticleForOneYear.length; i++) {
                         if (newArticleForOneYear[i] == null) {
                             newArticleForOneYear[i] = article;
@@ -216,5 +218,48 @@ public class ArticleService {
 
         return newArticleForOneYear;
     }
+
+    public Article[] showPublishedArticlesBasedOnOneHourAgo() {
+        Article[] articles = database.getArticleInit();
+        Article[] newArticleForOneYear = new Article[articles.length + 5];
+        LocalDateTime oneHourAgo = LocalDateTime.now().minusHours(1);
+        for (Article article : articles) {
+
+            if (article != null) {
+
+                if (article.getPublishedDate().isAfter(oneHourAgo)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return newArticleForOneYear;
+    }public Article[] showPublishedArticleBasedOnAWeekAgo() {
+        Article[] articles = database.getArticleInit();
+        Article[] newArticleForOneYear = new Article[articles.length + 5];
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime oneWeekAgo = now.minusWeeks(1);
+        for (Article article : articles) {
+
+            if (article != null) {
+                if (article.getPublishedDate().isAfter(oneWeekAgo)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return newArticleForOneYear;
+    }
+
 
 }
