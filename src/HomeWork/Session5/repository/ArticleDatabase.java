@@ -5,6 +5,7 @@ import HomeWork.Session5.model.Category;
 import HomeWork.Session5.model.Tag;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ArticleDatabase {
     Article[] articles = init();
@@ -56,7 +57,7 @@ public class ArticleDatabase {
                 "اینترنت",
                 "خلاصه هوش مصنوعی",
                 "انقلاب هوش مصنوعی در جهان",
-                LocalDate.of(2024, 06, 20),
+                LocalDateTime.of(2024, 06, 20,0,0),
                 true,
                 LocalDate.of(2023, 11, 15),
                 LocalDate.of(2022, 12, 25),
@@ -71,7 +72,7 @@ public class ArticleDatabase {
                 "آب و هوا",
                 "خلاصه آب و هوا",
                 "محتوا در مورد تاثیرات تغییرات آب و هوا",
-                LocalDate.of(2024, 10, 22),
+                LocalDateTime.of(2024, 10, 22,0,0),
                 true,
                 LocalDate.of(2023, 3, 10),
                 LocalDate.of(2021, 10, 10),
@@ -86,7 +87,7 @@ public class ArticleDatabase {
                 "سیاست",
                 "خلاصه ای از سیایست ایران و جوامع",
                 "سیاست ایران از قبل تا کنون",
-                LocalDate.of(2021, 8, 22),
+                LocalDateTime.of(2021, 8, 22,0,0),
                 true,
                 LocalDate.of(2021, 12, 30),
                 LocalDate.of(2021, 10, 10),

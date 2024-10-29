@@ -9,19 +9,20 @@ import HomeWork.Session5.repository.AuthorDatabase;
 import HomeWork.Session5.service.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static AuthorDatabase database = new AuthorDatabase();
-    static ArticleDatabase articleDatabase=new ArticleDatabase();
+    static ArticleDatabase articleDatabase = new ArticleDatabase();
     static AuthorInterfaceImpl authorService = new AuthorInterfaceImpl(database);
     static ArticleService articleService = new ArticleService(articleDatabase);
     static CtaegoryServiceImpl categoryService = new CtaegoryServiceImpl();
     static TagService tagService = new TagService();
 
-    static ModeratorService moderatorService = new ModeratorService(database,articleDatabase);
+    static ModeratorService moderatorService = new ModeratorService(database, articleDatabase);
 
     public static void main(String[] args) {
 
@@ -57,7 +58,9 @@ public class Main {
                     if (resNumber.equals("1")) {
                         List<Article> articles = moderatorService.allArticlesReadyForPublished();
                         for (Article article : articles) {
-                            System.out.println(article);
+                            if (article != null) {
+                                System.out.println(article);
+                            }
                         }
 
                     } else if (resNumber.equals("2")) {
@@ -166,7 +169,9 @@ public class Main {
             System.out.println("5 - مشاهده مقاله خود :");
             System.out.println("6 - ویرایش مقاله خود :");
             System.out.println("7- مشاهده مقالات منتشر شده بر اساس تاریخ ایجاد");
-            System.out.println("8 - خروج :");
+            System.out.println("8- مشاهده مقالات منتشر شده بر اساس تاریخ انتشار");
+            System.out.println("9- مشاهده مقالات منتشر شده بر اساس تاریخ ایجاد");
+            System.out.println("10 - خروج :");
             System.out.println("شماره درخواست خود را وارد نمائید:");
             String choice = scanner.next();
 
@@ -182,7 +187,7 @@ public class Main {
                 case "3":
                     showArticles();
                     System.out.println("برای مشاهده کامل مقاله شماره آن را وارد نمائید:");
-                    int id=new Scanner(System.in).nextInt();
+                    int id = new Scanner(System.in).nextInt();
                     showArticleById(id);
 
 
@@ -223,14 +228,25 @@ public class Main {
                     }
                     break;
                 case "7":
-            Article[]articles= articleService. showArticlesForCreateDate();
-            for (Article article:articles){
-                if (article != null) {
-                    System.out.println(article);
-                }
+                    Article[] articles = articleService.showArticlesForCreateDate();
+                    for (Article article : articles) {
+                        if (article != null) {
+                            System.out.println(article);
+                        }
 
-            }
+                    }
+                    break;
                 case "8":
+////////////////////////
+                    Article[] articlesPublished = articleService.showArticleBasedOnPublishedDate();
+                    for (Article article : articlesPublished) {
+                        if (article != null) {
+                            System.out.println(article);
+                        }
+
+                    }
+                    break;
+                case "10":
                     return;
                 default:
                     System.out.println("گزینه نامعتبر است. لطفا دوباره تلاش کنید.");
@@ -244,9 +260,9 @@ public class Main {
     public static void showArticles() {
         Article[] articles = articleService.showArticles();
         for (int i = 0; i < articles.length; i++) {
-          if (articles[i] != null) {
-              System.out.println("عنوان: " + articles[i].getTitle() + "\n" + "خلاصه: " + articles[i].getBrief() + "\n" + "شماره مقاله: " + articles[i].getId() + "\n" + "-----");
-          }
+            if (articles[i] != null) {
+                System.out.println("عنوان: " + articles[i].getTitle() + "\n" + "خلاصه: " + articles[i].getBrief() + "\n" + "شماره مقاله: " + articles[i].getId() + "\n" + "-----");
+            }
         }
     }
 
@@ -320,7 +336,7 @@ public class Main {
         String brief = scanner.nextLine();
         System.out.println("متن مقاله را وارد نمائید.");
         String content = scanner.nextLine();
-        LocalDate createDate = LocalDate.now();
+        LocalDateTime createDate = LocalDateTime.now();
         LocalDate lastUpdateDate = LocalDate.now();
         System.out.println("برای انتشار مقاله ایجاد شده عدد 1 و در غیر اینصورت عدد 2 را بزنید");
         String response = scanner.nextLine();

@@ -1,16 +1,17 @@
 package HomeWork.Session5.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Article {
     private int id;
     private String title;
     private String brief;
     private String content;
-    private LocalDate createDate;
+    private LocalDateTime createDate;
     private boolean isPublished;
     private LocalDate lastUpdateDate;
-    private LocalDate publishedDate;
+    private LocalDateTime publishedDate;
     private boolean status;
     private Category category;
     private Tag[] tags;
@@ -37,7 +38,7 @@ public class Article {
         this.tags = tags;
     }
 
-    public Article(int id, String title, String brief, String content, LocalDate createDate, boolean isPublished, LocalDate lastUpdateDate, LocalDate publishedDate, Tag tag, Category category) {
+    public Article(int id, String title, String brief, String content, LocalDateTime createDate, boolean isPublished, LocalDate lastUpdateDate, LocalDateTime publishedDate, Tag tag, Category category) {
         this.id = id;
         this.title = title;
         this.brief = brief;
@@ -51,7 +52,7 @@ public class Article {
 
     }
 
-    public Article(String title, String brief, String content, LocalDate createDate, boolean isPublished, LocalDate lastUpdateDate, Category category, Tag tag) {
+    public Article(String title, String brief, String content, LocalDateTime createDate, boolean isPublished, LocalDate lastUpdateDate, Category category, Tag tag) {
         this.title = title;
         this.brief = brief;
         this.content = content;
@@ -119,11 +120,11 @@ public class Article {
         this.content = content;
     }
 
-    public LocalDate getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDate createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
@@ -143,11 +144,11 @@ public class Article {
         this.lastUpdateDate = lastUpdateDate;
     }
 
-    public LocalDate getPublishedDate() {
+    public LocalDateTime getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(LocalDate publishedDate) {
+    public void setPublishedDate(LocalDateTime publishedDate) {
         this.publishedDate = publishedDate;
     }
 

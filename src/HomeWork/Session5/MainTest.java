@@ -10,6 +10,7 @@ import HomeWork.Session5.service.AuthorInterfaceImpl;
 import HomeWork.Session5.service.ModeratorService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,10 +88,10 @@ public class MainTest {
         author=  authorserv.signUp("author","4580084497",LocalDate.now().minusYears(1));
 
 
-        Article article = new Article("", "", "", LocalDate.of(2021, 8, 22), true, LocalDate.of(2021, 8, 22), null, null);
-        Article article1 = new Article("", "", "", LocalDate.of(2021, 8, 22), true, LocalDate.of(2021, 8, 22), null, null);
-        Article article2 = new Article("", "", "", LocalDate.of(2021, 8, 22), false, LocalDate.of(2021, 8, 22), null, null);
-        Article articl3 = new Article("", "", "", LocalDate.of(2021, 8, 22), false, LocalDate.of(2021, 8, 22), null, null);
+        Article article = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), true, LocalDate.of(2021, 8, 22), null, null);
+        Article article1 = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), true, LocalDate.of(2021, 8, 22), null, null);
+        Article article2 = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), false, LocalDate.of(2021, 8, 22), null, null);
+        Article articl3 = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), false, LocalDate.of(2021, 8, 22), null, null);
 
 
         authorserv.saveArticleforAuthor(author, article);

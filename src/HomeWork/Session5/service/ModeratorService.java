@@ -47,6 +47,7 @@ public class ModeratorService {
 
         if (articlesForPublishStatus.isEmpty()) {
             System.out.println("هیچ مقاله‌ای آماده برای انتشار وجود ندارد");
+            return null;
         }
         return articlesForPublishStatus;
     }
@@ -73,8 +74,13 @@ public class ModeratorService {
 
     private static void showBreifArticle(List<Article> articles) {
         for (int i = 0; i < articles.size(); i++) {
-            System.out.println(articles.get(i).getId() + " " + articles.get(i).getTitle());
+           if (articles.get(i) != null) {
+               System.out.println(articles.get(i).getId() + " " + articles.get(i).getTitle());
+
+           }
+            return ;
         }
+
     }
 
     public static Article findArticleById(int id, List<Article> targetArticles) {
