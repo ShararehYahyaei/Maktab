@@ -170,7 +170,7 @@ public class Main {
             System.out.println("6 - ویرایش مقاله خود :");
             System.out.println("7- مشاهده مقالات منتشر شده بر اساس تاریخ ایجاد");
             System.out.println("8- مشاهده مقالات منتشر شده بر اساس تاریخ انتشار");
-            System.out.println("9- مشاهده مقالات منتشر شده بر اساس تاریخ ایجاد");
+            System.out.println("9- مشاهده مقالات منتشر شده بر اساس تاریخ آپدیت");
             System.out.println("10 - خروج :");
             System.out.println("شماره درخواست خود را وارد نمائید:");
             String choice = scanner.next();
@@ -189,7 +189,6 @@ public class Main {
                     System.out.println("برای مشاهده کامل مقاله شماره آن را وارد نمائید:");
                     int id = new Scanner(System.in).nextInt();
                     showArticleById(id);
-
 
                     break;
                 case "4":
@@ -245,8 +244,16 @@ public class Main {
                         }
 
                     }
-
                     break;
+                    case "9":
+                        Article[] articlesUpdate = articleService.showArticlesBasedOnUpdateDate();
+                        for (Article article : articlesUpdate) {
+                            if (article != null) {
+                                System.out.println(article);
+                            }
+
+                        }
+                        break;
                 case "10":
                     return;
                 default:
@@ -338,7 +345,7 @@ public class Main {
         System.out.println("متن مقاله را وارد نمائید.");
         String content = scanner.nextLine();
         LocalDateTime createDate = LocalDateTime.now();
-        LocalDate lastUpdateDate = LocalDate.now();
+        LocalDateTime lastUpdateDate = LocalDateTime.now();
         System.out.println("برای انتشار مقاله ایجاد شده عدد 1 و در غیر اینصورت عدد 2 را بزنید");
         String response = scanner.nextLine();
         boolean result = false;
@@ -466,7 +473,7 @@ public class Main {
             case 6:
                 Tag tag = showTag();
                 article1.setTag(tag);
-                article1.setLastUpdateDate(LocalDate.now());
+                article1.setLastUpdateDate(LocalDateTime.now());
                 break;
             default: {
                 System.out.println("گزینه نامناسب را انتخاب کرده اید");

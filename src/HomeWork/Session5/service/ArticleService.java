@@ -159,7 +159,7 @@ public class ArticleService {
                 newArticleFilter = showPublishedArticlesBasedOnOneHourAgo();
                 break;
             case "2":
-                newArticleFilter =   showPublishedArticleBasedOnAWeekAgo();
+                newArticleFilter = showPublishedArticleBasedOnAWeekAgo();
                 break;
             case "3":
                 newArticleFilter = showPublishedArticlesForSixMonthAgo();
@@ -239,7 +239,9 @@ public class ArticleService {
         }
 
         return newArticleForOneYear;
-    }public Article[] showPublishedArticleBasedOnAWeekAgo() {
+    }
+
+    public Article[] showPublishedArticleBasedOnAWeekAgo() {
         Article[] articles = database.getArticleInit();
         Article[] newArticleForOneYear = new Article[articles.length + 5];
         LocalDateTime now = LocalDateTime.now();
@@ -261,5 +263,117 @@ public class ArticleService {
         return newArticleForOneYear;
     }
 
+    public Article[] showArticlesBasedOnUpdateDate() {
+        Article[] newArticleFilter = null;
+        System.out.println("1 - بر اساس یکساعت اخیر  .");
+        System.out.println(" 2 - بر اساس 1 هفته اخیر .");
+        System.out.println(" 3 - بر اساس  6 ماه اخیر.");
+        System.out.println("4 - بر اساس  1 سال اخیر.");
+        System.out.println("نوغ فیلتر  مد نظر خود را وارد نمائید .");
+        String res = new Scanner(System.in).nextLine();
+
+        switch (res) {
+            case "1":
+                newArticleFilter = showUpdateArticlesBasedOnOneHourAgo();
+                break;
+            case "2":
+                newArticleFilter = showUpdateArticleBasedOnAWeekAgo();
+                break;
+            case "3":
+                newArticleFilter =showUpdateArticlesForSixMonthAgo();
+                break;
+            case "4":
+                newArticleFilter = articledUpdateForOneYearAgo();
+                break;
+            default:
+                System.out.println("گزینه نامناسب");
+
+        }
+        return newArticleFilter;
+    }
+
+    public Article[] showUpdateArticlesBasedOnOneHourAgo() {
+        Article[] articles = database.getArticleInit();
+        Article[] newArticleForOneYear = new Article[articles.length + 5];
+        LocalDateTime oneHourAgo = LocalDateTime.now().minusHours(1);
+        for (Article article : articles) {
+
+            if (article != null) {
+                if (article.getLastUpdateDate().isAfter(oneHourAgo)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return newArticleForOneYear;
+    }
+
+    public Article[] showUpdateArticleBasedOnAWeekAgo() {
+        Article[] articles = database.getArticleInit();
+        Article[] newArticleForOneYear = new Article[articles.length + 5];
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime oneWeekAgo = now.minusWeeks(1);
+        for (Article article : articles) {
+
+            if (article != null) {
+                if (article.getLastUpdateDate().isAfter(oneWeekAgo)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return newArticleForOneYear;
+    }
+    public Article[] showUpdateArticlesForSixMonthAgo() {
+        Article[] articles = database.getArticleInit();
+        Article[] newArticleForOneYear = new Article[articles.length + 5];
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime sixMonthsAgo = now.minusMonths(6);
+        for (Article article : articles) {
+
+            if (article != null) {
+                if (article.getLastUpdateDate().isAfter(sixMonthsAgo)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return newArticleForOneYear;
+    }
+    public Article[] articledUpdateForOneYearAgo() {
+        Article[] articles = database.getArticleInit();
+        Article[] newArticleForOneYear = new Article[articles.length + 1];
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime oneYear = now.minusYears(1);
+        for (Article article : articles) {
+
+            if (article != null) {
+                if (article.getLastUpdateDate().isAfter(oneYear)) {
+                    for (int i = 0; i < newArticleForOneYear.length; i++) {
+                        if (newArticleForOneYear[i] == null) {
+                            newArticleForOneYear[i] = article;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        return newArticleForOneYear;
+    }
 
 }

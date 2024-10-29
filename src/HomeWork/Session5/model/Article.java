@@ -10,7 +10,7 @@ public class Article {
     private String content;
     private LocalDateTime createDate;
     private boolean isPublished;
-    private LocalDate lastUpdateDate;
+    private LocalDateTime lastUpdateDate;
     private LocalDateTime publishedDate;
     private boolean status;
     private Category category;
@@ -38,7 +38,7 @@ public class Article {
         this.tags = tags;
     }
 
-    public Article(int id, String title, String brief, String content, LocalDateTime createDate, boolean isPublished, LocalDate lastUpdateDate, LocalDateTime publishedDate, Tag tag, Category category) {
+    public Article(int id, String title, String brief, String content, LocalDateTime createDate, boolean isPublished, LocalDateTime lastUpdateDate, LocalDateTime publishedDate, Tag tag, Category category) {
         this.id = id;
         this.title = title;
         this.brief = brief;
@@ -52,7 +52,7 @@ public class Article {
 
     }
 
-    public Article(String title, String brief, String content, LocalDateTime createDate, boolean isPublished, LocalDate lastUpdateDate, Category category, Tag tag) {
+    public Article(String title, String brief, String content, LocalDateTime createDate, boolean isPublished, LocalDateTime lastUpdateDate, Category category, Tag tag) {
         this.title = title;
         this.brief = brief;
         this.content = content;
@@ -136,11 +136,11 @@ public class Article {
         isPublished = published;
     }
 
-    public LocalDate getLastUpdateDate() {
+    public LocalDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
 
-    public void setLastUpdateDate(LocalDate lastUpdateDate) {
+    public void setLastUpdateDate(LocalDateTime lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 

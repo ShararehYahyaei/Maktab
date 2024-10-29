@@ -59,7 +59,7 @@ public class ArticleDatabase {
                 "انقلاب هوش مصنوعی در جهان",
                 LocalDateTime.of(2024, 06, 20,0,0),
                 true,
-                LocalDate.of(2023, 11, 15),
+                LocalDateTime.of(2023, 11, 15,0,0),
                 LocalDateTime.of(2022, 12, 25,0,0),
                 new Tag(1, "اینترنت جهانی"),
                 new Category("شبکه و اینترنت ", "\"تحولات اخیر در تکنولوژی 5G")
@@ -74,7 +74,7 @@ public class ArticleDatabase {
                 "محتوا در مورد تاثیرات تغییرات آب و هوا",
                 LocalDateTime.of(2024, 10, 22,0,0),
                 true,
-                LocalDate.of(2023, 3, 10),
+                LocalDateTime.of(2023, 3, 10,0,0),
                 LocalDateTime.of(2021, 10, 10,0,0),
                 new Tag(2, "تکنولوژی پیش بینی هوا"),
                 new Category("هوش مصنوعی", "نقش هوش مصنوعی در اتوماسیون ")
@@ -89,7 +89,7 @@ public class ArticleDatabase {
                 "سیاست ایران از قبل تا کنون",
                 LocalDateTime.of(2021, 8, 22,0,0),
                 true,
-                LocalDate.of(2021, 12, 30),
+                LocalDateTime.of(2021, 12, 30,0,0),
                 LocalDateTime.of(2021, 10, 10,0,0),
                 new Tag(3, " انسان خلاق"),
                 new Category("خلاقیت", "نقش خلاقیت در توسعه ")

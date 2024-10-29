@@ -86,10 +86,10 @@ public class MainTest {
         author = authorserv.signUp("author", "4580084497", LocalDate.now().minusYears(1));
 
 
-        Article article = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), true, LocalDate.of(2021, 8, 22), null, null);
-        Article article1 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), true, LocalDate.of(2021, 8, 22), null, null);
-        Article article2 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), false, LocalDate.of(2021, 8, 22), null, null);
-        Article articl3 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), false, LocalDate.of(2021, 8, 22), null, null);
+        Article article = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), true, LocalDateTime.of(2021, 8, 22,0,0), null, null);
+        Article article1 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), true, LocalDateTime.of(2021, 8, 22,0,0), null, null);
+        Article article2 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), false, LocalDateTime.of(2021, 8, 22,0,0), null, null);
+        Article articl3 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), false, LocalDateTime.of(2021, 8, 22,0,0), null, null);
 
 
         authorserv.saveArticleforAuthor(author, article);
