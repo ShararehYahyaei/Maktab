@@ -2,8 +2,6 @@ package HomeWork.Session5;
 
 import HomeWork.Session5.model.Article;
 import HomeWork.Session5.model.Author;
-import HomeWork.Session5.model.Category;
-import HomeWork.Session5.model.Tag;
 import HomeWork.Session5.repository.ArticleDatabase;
 import HomeWork.Session5.repository.AuthorDatabase;
 import HomeWork.Session5.service.AuthorInterfaceImpl;
@@ -17,9 +15,9 @@ import java.util.List;
 public class MainTest {
     public static void main(String[] args) {
         AuthorDatabase db;
-      //  saveFirstArticleTest();
-      //  secondTimeSaveArticle();
-      //  testForIsArticle();
+        saveFirstArticleTest();
+        secondTimeSaveArticle();
+        testForIsArticle();
         testForGettingAllArticlesAreReadyForPublish();
     }
 
@@ -81,17 +79,17 @@ public class MainTest {
         Author author = new Author();
 
         AuthorDatabase db = new AuthorDatabase();
-        ArticleDatabase dA=new ArticleDatabase();
-        ModeratorService ms = new ModeratorService(db,dA);
+        ArticleDatabase dA = new ArticleDatabase();
+        ModeratorService ms = new ModeratorService(db, dA);
         AuthorInterfaceImpl authorserv = new AuthorInterfaceImpl(db);
 
-        author=  authorserv.signUp("author","4580084497",LocalDate.now().minusYears(1));
+        author = authorserv.signUp("author", "4580084497", LocalDate.now().minusYears(1));
 
 
-        Article article = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), true, LocalDate.of(2021, 8, 22), null, null);
-        Article article1 = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), true, LocalDate.of(2021, 8, 22), null, null);
-        Article article2 = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), false, LocalDate.of(2021, 8, 22), null, null);
-        Article articl3 = new Article("", "", "", LocalDateTime.of(2021, 8, 22,0,0), false, LocalDate.of(2021, 8, 22), null, null);
+        Article article = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), true, LocalDate.of(2021, 8, 22), null, null);
+        Article article1 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), true, LocalDate.of(2021, 8, 22), null, null);
+        Article article2 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), false, LocalDate.of(2021, 8, 22), null, null);
+        Article articl3 = new Article("", "", "", LocalDateTime.of(2021, 8, 22, 0, 0), false, LocalDate.of(2021, 8, 22), null, null);
 
 
         authorserv.saveArticleforAuthor(author, article);
@@ -100,10 +98,10 @@ public class MainTest {
         authorserv.saveArticleforAuthor(author, articl3);
 
 
-         List<Article> articles=  ms.allArticlesReadyForPublished();
-         List<Article> all = new ArrayList<Article>();
-         all.add(article);
-         all.add(article1);
+        List<Article> articles = ms.allArticlesReadyForPublished();
+        List<Article> all = new ArrayList<Article>();
+        all.add(article);
+        all.add(article1);
         if (articles.size() == all.size()) {
             System.out.println("درست است");
         } else {

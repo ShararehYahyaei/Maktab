@@ -5,7 +5,8 @@ import HomeWork.Session5.model.Author;
 import HomeWork.Session5.repository.ArticleDatabase;
 import HomeWork.Session5.repository.AuthorDatabase;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -61,7 +62,7 @@ public class ModeratorService {
         String resultF = new Scanner(System.in).next();
         if (resultF.equals("1")) {
             article.setStatus(true);
-            article.setPublishedDate(LocalDate.now());
+            article.setPublishedDate(LocalDateTime.now());
             articleDatabase.addPublishedArticles(article);
             System.out.println("مقاله تایید و اضافه شد.");
 
