@@ -165,7 +165,7 @@ public class Main {
             System.out.println("4 - ایجاد مقاله جدید :");
             System.out.println("5 - مشاهده مقاله خود :");
             System.out.println("6 - ویرایش مقاله خود :");
-            System.out.println("7- مشاهده مقالات منتشر شده بر اساس تاریخ");
+            System.out.println("7- مشاهده مقالات منتشر شده بر اساس تاریخ ایجاد");
             System.out.println("8 - خروج :");
             System.out.println("شماره درخواست خود را وارد نمائید:");
             String choice = scanner.next();
@@ -223,7 +223,13 @@ public class Main {
                     }
                     break;
                 case "7":
+            Article[]articles= articleService. showArticlesForCreateDate();
+            for (Article article:articles){
+                if (article != null) {
+                    System.out.println(article);
+                }
 
+            }
                 case "8":
                     return;
                 default:
